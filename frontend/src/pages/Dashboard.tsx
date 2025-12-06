@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import api from '../lib/api';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../components/ui/card';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Badge } from '../components/ui/badge';
 import { TaskDialog } from '../components/TaskDialog';
-import { Plus, Search, LogOut, Trash2, Edit, CheckCircle2, Circle, Clock, LayoutDashboard } from 'lucide-react';
+import { Plus, Search, LogOut, Trash2, Edit, CheckCircle2, Clock, LayoutDashboard } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Dashboard() {
