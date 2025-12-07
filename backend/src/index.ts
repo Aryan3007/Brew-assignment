@@ -13,7 +13,7 @@ connectDB();
 const app = express();
 
 const corsOptions = {
-    origin: 'http://localhost:5173', // Frontend URL
+    origin: ['http://localhost:5173', 'https://brew-assignment-ten.vercel.app/'], // Frontend URL
     credentials: true, // Allow cookies
 };
 
@@ -24,6 +24,9 @@ app.use(cookieParser());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
+app.get('/api/status', (req, res) => {
+    res.status(200).json({ status: 'running', message: 'API is up and running' });
+});
 
 const PORT = process.env.PORT || 5000;
 
