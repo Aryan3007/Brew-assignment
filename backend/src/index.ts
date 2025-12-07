@@ -13,7 +13,13 @@ connectDB();
 const app = express();
 
 const corsOptions = {
-    origin: ['http://localhost:5173', 'https://brew-assignment-ten.vercel.app/'], // Frontend URL
+    origin: [
+        'http://localhost:5173',
+        'http://localhost:5174', // Vite fallback
+        'http://localhost:3000', // React default
+        'https://brew-assignment-ten.vercel.app', // Frontend Producion
+        'https://brew-assignment-npad.vercel.app' // Backend Production (self)
+    ],
     credentials: true, // Allow cookies
 };
 
