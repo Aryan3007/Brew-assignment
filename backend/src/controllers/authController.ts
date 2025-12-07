@@ -30,7 +30,8 @@ export const register = async (req: Request, res: Response): Promise<any> => {
             const token = generateToken(user._id);
             res.cookie('token', token, {
                 httpOnly: true,
-                secure: process.env.NODE_ENV === 'production',
+                secure: true,
+                sameSite: 'none',
                 maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
             });
 
@@ -56,7 +57,8 @@ export const login = async (req: Request, res: Response): Promise<any> => {
             const token = generateToken(user._id);
             res.cookie('token', token, {
                 httpOnly: true,
-                secure: process.env.NODE_ENV === 'production',
+                secure: true,
+                sameSite: 'none',
                 maxAge: 30 * 24 * 60 * 60 * 1000,
             });
 
@@ -105,7 +107,8 @@ export const googleLogin = async (req: Request, res: Response): Promise<any> => 
 
         res.cookie('token', sessionToken, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
+            secure: true,
+            sameSite: 'none',
             maxAge: 30 * 24 * 60 * 60 * 1000,
         });
 
@@ -122,6 +125,8 @@ export const googleLogin = async (req: Request, res: Response): Promise<any> => 
 export const logout = (req: Request, res: Response) => {
     res.cookie('token', '', {
         httpOnly: true,
+        secure: true,
+        sameSite: 'none',
         expires: new Date(0),
     });
     res.status(200).json({ message: 'Logged out' });
